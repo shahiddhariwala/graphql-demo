@@ -43,6 +43,11 @@ const resolvers = {
       db.games.push(newGame);
       return newGame;
     },
+    updateGame: (parent, args) => {
+      let updatedGame = db.games.find((game) => game.id === args.id);
+      Object.assign(updatedGame, args.game);
+      return updatedGame;
+    },
   },
 };
 
