@@ -30,6 +30,15 @@ export const typeDefs = `#graphql
         review(id: ID!): Review
     }
 
+    type Mutation {
+        deleteGame(id: ID!): Game
+        addGame(game: GameInput): Game
+    }
+
+    input GameInput {
+        title: String!
+        platform: [String!]!
+    }
 `;
 
 // Data types supported by GraphQL
