@@ -17,6 +17,19 @@ const resolvers = {
     review: (parent, args) =>
       db.reviews.find((review) => review.id === args.id),
   },
+  // Relationship resolvers
+  Game: {
+    reviews: (parent) =>
+      db.reviews.filter((review) => review.game_id === parent.id),
+  },
+  Review: {
+    author: (parent) => db.authors.find((author) => author.id === parent.author_id),
+    game: (parent) => db.games.find((game) => game.id === parent.game_id),
+  },
+  Author: {
+    reviews: (parent) =>
+      db.reviews.filter((review) => review.author_id === parent.id),
+  },
 };
 
 const server = new ApolloServer({

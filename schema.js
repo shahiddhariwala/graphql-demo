@@ -1,20 +1,24 @@
 export const typeDefs = `#graphql
     type Game {
         id: ID!
-        name: String!
+        title: String!
         platform: [String]!
+        reviews: [Review!]
     }
 
     type Review {
         id: ID!
         content: String!
         rating: Int!
+        author: Author!
+        game: Game!
     }
 
     type Author {
         id: ID!
         name: String!
         reviews: [Review]!
+
     }
 
     type Query {
@@ -34,7 +38,6 @@ export const typeDefs = `#graphql
 //  - ID is used to identify a unique object or record
 //  - ID is serialized as a string, but not all strings are IDs
 //  - ID is not intended to be human-readable
-
 
 // type Query is must be defined in GraphQL schema
 //  - Query is a special type in GraphQL
